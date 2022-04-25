@@ -14,11 +14,23 @@ public static class Repository
         return GetChangedFilesList(commit, comparePolicy);
     }
 
+    private static string GetRootDirectory(string path)
+    {
+        while (true)
+        {
+            string temp = Path.GetDirectoryName(path);
+            if (String.IsNullOrEmpty(temp))
+                break;
+            path = temp;
+        }
+        return path;
+    }
+
     /// <summary> Производит поиск всех файлов, учитывая последние изменения </summary>
     /// <param name="from"> Источник файлов </param>
     /// <param name="commitRoot"> Корень фиксации </param>
     /// <returns> Словарь типа (string относительный путь, string абсолютный путь) </returns>
-    private static Dictionary<string, string> GetVersionedFilesFromDestination(string from, string commitRoot)
+    private static Dictionary<string, string> GetVersionedFilesFromDestination(string from)
     {
         // Получаем все версионные файлы в папке назначения, отсортированные по имени (дате изменения)
         var destinationFiles = GetAllFilesOrderedByChanges(from);
@@ -32,14 +44,18 @@ public static class Repository
         // Такое возможно, только если файлы отсортированны 
         foreach (var file in destinationFiles)
         {
-            var relativePathToFile = Path.GetRelativePath(commitRoot, file);
-            if (uniqVersionedFiles.ContainsKey(relativePathToFile)) // обновление уже существ.
+            var relativePathToFile = Path.GetRelativePath(from, file);
+            var commitDirName = GetRootDirectory(relativePathToFile);
+
+            var relativePathToFileFromCommit = Path.GetRelativePath(commitDirName, relativePathToFile);
+            
+            if (uniqVersionedFiles.ContainsKey(relativePathToFileFromCommit)) // обновление уже существ.
             {
-                uniqVersionedFiles[relativePathToFile] = file;
+                uniqVersionedFiles[relativePathToFileFromCommit] = file;
             }
             else // Добавление нового
             {
-                uniqVersionedFiles.Add(relativePathToFile, file);
+                uniqVersionedFiles.Add(relativePathToFileFromCommit, file);
             }
         }
 
@@ -51,6 +67,7 @@ public static class Repository
         return Directory.GetFileSystemEntries(from, "*", SearchOption.AllDirectories)
                 .Where(x => (new FileInfo(x).Attributes & FileAttributes.Directory) != FileAttributes.Directory)
                 .OrderBy(x => x)
+                .Select(Path.GetFullPath)
                 .ToArray();
     }
 
@@ -65,7 +82,7 @@ public static class Repository
     private static Commit GetChangedFilesList(Commit commit, IFileComparePolicy policy)
     {
         var sourceFiles = GetAllFilesOrderedByChanges(commit.SourceRoot);
-        var fixedFiles = GetVersionedFilesFromDestination(commit.DestinationRoot, commit.CommitDirectory);
+        var fixedFiles = GetVersionedFilesFromDestination(commit.DestinationRoot);
 
         commit.ChangedFiles = new List<string>();
         

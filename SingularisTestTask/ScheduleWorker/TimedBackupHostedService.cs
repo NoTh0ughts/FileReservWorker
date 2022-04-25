@@ -80,8 +80,6 @@ public class TimedBackupHostedService : BackgroundService
     
     private Task WorkProcess()
     {
-        _logger.LogInformation($"iteration number: {_iterationNumber++}");
-
         try
         {
             var options = ActualOptions;
@@ -97,22 +95,22 @@ public class TimedBackupHostedService : BackgroundService
         }
         catch (OptionsValidationException e)
         {
-            _logger.LogError($"Invalid input : {e.OptionsName} in {APP_SETTINGS_FILENAME}");
+            _logger.LogError($"Invalid input in {APP_SETTINGS_FILENAME}");
             Environment.Exit(IVALID_SETTINGS_FORMAT);
         }
         catch (UnauthorizedAccessException e)
         {
-            _logger.LogError($"Have not access to directory {e.Message}");
+            _logger.LogError($"Have not access to directory");
             Environment.Exit(UNAUTHORIZED);
         }
         catch (DirectoryNotFoundException e)
         {
-            _logger.LogError($"Directory not found {e.Message}");
+            _logger.LogError($"Directory not found");
             Environment.Exit(DIRECTORY_NOT_FOUND);
         }
         catch (FileNotFoundException e)
         {
-            _logger.LogError($"File not found {e.FileName}");
+            _logger.LogError($"File not found ");
         }
 
         return Task.CompletedTask;
