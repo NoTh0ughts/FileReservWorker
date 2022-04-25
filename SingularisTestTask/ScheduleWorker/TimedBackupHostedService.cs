@@ -63,7 +63,9 @@ public class TimedBackupHostedService : BackgroundService
         }
         catch (OptionsValidationException e)
         {
-            _logger.LogError($"Invalid input : {e.OptionsName} in {APP_SETTINGS_FILENAME}");
+            _logger.LogError("Invalid input : {OptionsName} in {APP_SETTINGS_FILENAME}",
+                e.OptionsName,
+                APP_SETTINGS_FILENAME);
             Environment.Exit(IVALID_SETTINGS_FORMAT);
         }
         
@@ -86,29 +88,30 @@ public class TimedBackupHostedService : BackgroundService
             
             if (FileHelper.IsPrimaryResolve(options.DestinationPath))
                 _logger.LogInformation("Make a primary backup");
-
+            
+            _logger.LogInformation("Iteration number :{_iterationNumber}", _iterationNumber++);
             // Создается новая фиксация
             var commit = Commit.Create(options.SourcePath, options.DestinationPath, _filenameGenerationPolicy);
             
             // Определение изменений и отправка их в необходимую дирректорию
             Repository.MakeResolve(commit, _fileComparePolicy).Push();
         }
-        catch (OptionsValidationException e)
+        catch (OptionsValidationException)
         {
             _logger.LogError($"Invalid input in {APP_SETTINGS_FILENAME}");
             Environment.Exit(IVALID_SETTINGS_FORMAT);
         }
-        catch (UnauthorizedAccessException e)
+        catch (UnauthorizedAccessException)
         {
             _logger.LogError($"Have not access to directory");
             Environment.Exit(UNAUTHORIZED);
         }
-        catch (DirectoryNotFoundException e)
+        catch (DirectoryNotFoundException)
         {
             _logger.LogError($"Directory not found");
             Environment.Exit(DIRECTORY_NOT_FOUND);
         }
-        catch (FileNotFoundException e)
+        catch (FileNotFoundException)
         {
             _logger.LogError($"File not found ");
         }
