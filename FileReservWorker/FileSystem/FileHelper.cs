@@ -1,8 +1,8 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using static SingularisTestTask.AppConstants.AppConstants;
+using static FileReservWorker.AppConstants.AppConstants;
 
-namespace SingularisTestTask.FileSystem;
+namespace FileReservWorker.FileSystem;
 
 public static class FileHelper
 {

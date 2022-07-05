@@ -1,4 +1,4 @@
-﻿namespace SingularisTestTask.FileSystem.FileComparePolicy;
+﻿namespace FileReservWorker.FileSystem.FileComparePolicy;
 
 /// <summary> Политика сравнения файлов на основе вычисления их хеша md5 </summary>
 public class HashFileComparePolicy : IFileComparePolicy

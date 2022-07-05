@@ -1,14 +1,14 @@
 ﻿using Cronos;
+using FileReservWorker.Config;
+using FileReservWorker.FileSystem;
+using FileReservWorker.FileSystem.FileComparePolicy;
+using FileReservWorker.FileSystem.FilenamePolicy;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SingularisTestTask.Config;
-using SingularisTestTask.FileSystem;
-using SingularisTestTask.FileSystem.FileComparePolicy;
-using SingularisTestTask.FileSystem.FilenamePolicy;
-using static SingularisTestTask.AppConstants.AppConstants;
+using static FileReservWorker.AppConstants.AppConstants;
 
-namespace SingularisTestTask.ScheduleWorker;
+namespace FileReservWorker.ScheduleWorker;
 
 /// <summary>
 /// Выполняет периодичное инкрементальное копирование с интервалом указаным в appsettings.json

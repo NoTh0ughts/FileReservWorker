@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SingularisTestTask.Config;
+namespace FileReservWorker.Config;
 
 /// <summary>
 /// Модель параметров приложения

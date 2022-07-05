@@ -1,4 +1,4 @@
-﻿namespace SingularisTestTask.FileSystem.FileComparePolicy;
+﻿namespace FileReservWorker.FileSystem.FileComparePolicy;
 
 /// <summary> Интерфейс политики сравнения файлов </summary>
 public interface IFileComparePolicy

@@ -1,15 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FileReservWorker.Config;
+using FileReservWorker.FileSystem.FileComparePolicy;
+using FileReservWorker.FileSystem.FilenamePolicy;
+using FileReservWorker.ScheduleWorker;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SingularisTestTask.Config;
-using SingularisTestTask.FileSystem.FileComparePolicy;
-using SingularisTestTask.FileSystem.FilenamePolicy;
-using SingularisTestTask.ScheduleWorker;
-using static SingularisTestTask.AppConstants.AppConstants;
+using static FileReservWorker.AppConstants.AppConstants;
 
 
-namespace SingularisTestTask;
+namespace FileReservWorker;
 
 
 /// <summary>

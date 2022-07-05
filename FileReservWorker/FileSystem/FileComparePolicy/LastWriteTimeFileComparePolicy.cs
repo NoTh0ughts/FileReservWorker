@@ -1,4 +1,4 @@
-﻿namespace SingularisTestTask.FileSystem.FileComparePolicy;
+﻿namespace FileReservWorker.FileSystem.FileComparePolicy;
 
 /// <summary> Политика сравнения файлов на основе даты последнего изменения </summary>
 public class LastWriteTimeFileComparePolicy : IFileComparePolicy

@@ -1,7 +1,7 @@
-﻿using SingularisTestTask.FileSystem;
-using SingularisTestTask.FileSystem.FilenamePolicy;
+﻿using FileReservWorker.FileSystem;
+using FileReservWorker.FileSystem.FilenamePolicy;
 
-namespace SingularisTestTask.ScheduleWorker;
+namespace FileReservWorker.ScheduleWorker;
 
 /// <summary>
 /// Объект фиксации

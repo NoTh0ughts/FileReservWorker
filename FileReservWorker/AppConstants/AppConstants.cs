@@ -1,5 +1,5 @@
 ﻿
-namespace SingularisTestTask.AppConstants;
+namespace FileReservWorker.AppConstants;
 
 public static class AppConstants
 {

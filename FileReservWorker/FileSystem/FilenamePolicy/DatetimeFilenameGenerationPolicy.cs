@@ -1,4 +1,4 @@
-﻿namespace SingularisTestTask.FileSystem.FilenamePolicy;
+﻿namespace FileReservWorker.FileSystem.FilenamePolicy;
 using static AppConstants.AppConstants;
 
 /// <summary> Политика генерации имя файла на основе даты инкрементации </summary>

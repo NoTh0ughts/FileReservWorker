@@ -1,6 +1,6 @@
-﻿using SingularisTestTask.FileSystem.FileComparePolicy;
+﻿using FileReservWorker.FileSystem.FileComparePolicy;
 
-namespace SingularisTestTask.ScheduleWorker;
+namespace FileReservWorker.ScheduleWorker;
 
 /// <summary> Выполняет поиск изменений, формируя объект фиксацию </summary>
 public static class Repository

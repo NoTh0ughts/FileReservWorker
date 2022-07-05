@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingularisTestTask", "SingularisTestTask\SingularisTestTask.csproj", "{587080EA-6627-431B-9675-394785502489}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReservWorker", "FileReservWorker\FileReservWorker.csproj", "{587080EA-6627-431B-9675-394785502489}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

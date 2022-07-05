@@ -1,4 +1,4 @@
-﻿namespace SingularisTestTask.FileSystem.FilenamePolicy;
+﻿namespace FileReservWorker.FileSystem.FilenamePolicy;
 
 /// <summary> Интерфейс политики генерации имени файла </summary>
 public interface IFilenameGenerationPolicy
