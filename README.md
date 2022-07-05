@@ -4,7 +4,7 @@
 ### Как использовать с Docker?
 1. Если необходимо изменить источник данных для копирования, меняем 5ю строку в Dockerfile
     
-    ```COPY ["SingularisTestTask/tmp/source", "tmp/source"]```
+    ```COPY ["FileReservWorker/tmp/source", "tmp/source"]```
     
     На 
 
